@@ -8,7 +8,7 @@ function Result() {
     useEffect(() => {
         setInterval(() => {
             setTime(new Date())
-        }, 1000*30)
+        }, 1000)
     }, [])
     if (getCsv == null) {
         fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSZGE5EGSpP2J-l-griubIFDR2rhrc8ZbJiWg4zIjMSEzxhx733UHwJRbCBzF4TeqJgq4IcV83YWbkk/pub?gid=1857516522&single=true&output=csv")
@@ -83,11 +83,18 @@ function Result() {
                 ※使い方: D列の「残り時間記帳欄」に残り「HH:MM」を記帳するだけ
             </>
             <details>
-                <summary>エリア画像</summary>
+                <summary>オグリア</summary>
                 <img src={`${process.env.PUBLIC_URL}/conq/オグリア.png`} loading='lazy' />
+            </details>
+            <details>
+                <summary>クレメンス</summary>
                 <img src={`${process.env.PUBLIC_URL}/conq/クレメンス.png`} loading='lazy' />
+            </details>
+            <details>
+                <summary>混迷</summary>
                 <img src={`${process.env.PUBLIC_URL}/conq/混迷.png`} loading='lazy' />
             </details>
+            <>現在の日時{getTime.getHours().toString().padStart(2, '0')}:{getTime.getMinutes().toString().padStart(2, '0')}:{getTime.getSeconds().toString().padStart(2, '0')}</>
             <Table>
                 {list}
             </Table>
