@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Table, Form, Button } from 'react-bootstrap';
+import { Table, Form } from 'react-bootstrap';
 function Result() {
     const [getCsv, setCsv] = useState();
     const [getTime, setTime] = useState(new Date());
