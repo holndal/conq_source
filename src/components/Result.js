@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Table, Form, Button } from 'react-bootstrap';
-import { getLCP } from 'web-vitals';
+import { Table, Form } from 'react-bootstrap';
 function Result() {
-    function reserveAlerm(ms) {
-        setTimeout(() => {
-            new Notification("採取の時間です")
-        }, ms)
-    }
     const [getCsv, setCsv] = useState();
     const [getTime, setTime] = useState(new Date());
     const [getParam, setParam] = useState([true, true, true, true, true, true, true, true])
-    const [getAlerm, setAlerm] = useState()
     // 0	綿
     // 1	木
     // 2	革
@@ -35,9 +28,6 @@ function Result() {
         list.push(
             <thead>
                 <tr>
-                    <th>
-                        通知
-                    </th>
                     <th>
                         エリア
                     </th>
@@ -120,46 +110,12 @@ function Result() {
                 continue
             }
             let targetTime = new Date(line[7]);
-            let leftTimeMilli = targetTime - getTime
-            let leftTime = leftTimeMilli / 1000 / 60;
+            let leftTime = (targetTime - getTime) / 1000 / 60;
             if (leftTime < 0) {
                 continue
             }
-            let text = "通知オン"
-            if (getAlerm != null && getAlerm[i]) {
-                text = "通知設定済み"
-            }
             listt.push(
                 <tr>
-                    <th>
-                        <Button disabled={(() => {
-                            if (getAlerm == null) {
-                                return false;
-                            }
-                            if (getAlerm[i]) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        })()}
-                            onClick={(e) => {
-                                console.log("CLICK")
-                                let alermList = null;
-                                if (getAlerm == null) {
-                                    alermList = new Array(getCsv.length).fill(false);
-                                    alermList[i] = true
-                                    Notification.requestPermission();
-                                }
-                                else {
-                                    alermList = [...getAlerm]
-                                }
-                                console.log(alermList)
-                                alermList[i] = true
-                                setAlerm(alermList)
-                                reserveAlerm(leftTimeMilli)
-                            }}>{text}
-                        </Button>
-                    </th>
                     <th>
                         {line[0]}
                     </th>
