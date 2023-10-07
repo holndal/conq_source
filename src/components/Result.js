@@ -111,8 +111,22 @@ function Result() {
             }
             let targetTime = new Date(line[7]);
             let leftTime = (targetTime - getTime) / 1000 / 60;
+            let flaggy = true
             if (leftTime < 0) {
-                continue
+                let now = new Date()
+                if (now.getDay() === 2 || now.getDay() === 6) {
+                    if (21 <= now.getHours() && now.getHours() <= 23) {
+                        flaggy = false
+                    }
+                }
+                if (flaggy) {
+                    continue
+                }
+
+            }
+            let timetext = Math.floor(leftTime / 60).toString().padStart(2, '0') + ":" + Math.floor(leftTime % 60).toString().padStart(2, '0')
+            if (leftTime < 0) {
+                timetext = "領土戦 保留中"
             }
             listt.push(
                 <tr>
@@ -126,7 +140,7 @@ function Result() {
                         {line[2]}
                     </th>
                     <th>
-                        {Math.floor(leftTime / 60).toString().padStart(2, '0')}:{Math.floor(leftTime % 60).toString().padStart(2, '0')}
+                        {timetext}
                     </th>
                     <th>
                         {targetTime.getHours().toString().padStart(2, '0')}:{targetTime.getMinutes().toString().padStart(2, '0')}
