@@ -129,6 +129,9 @@ function Result() {
                 timetext = "領土戦 保留中"
             }
             let targetText = targetTime.getHours().toString().padStart(2, '0') + ":" + targetTime.getMinutes().toString().padStart(2, '0')
+            let targetTimer = targetTime.getHours() * 60 + targetTime.getMinutes() - 1
+            let targetUrl = Math.floor(targetTimer / 60).toString().padStart(2, "0") + ":" + Math.floor(targetTimer % 60).toString().padStart(2, "0")
+
             listt.push(
                 <tr>
                     <th>
@@ -144,7 +147,7 @@ function Result() {
                         {timetext}
                     </th>
                     <th>
-                        <a href={"https://onlinealarmkur.com/ja/#" + targetText} target="_blank">
+                        <a href={"https://onlinealarmkur.com/ja/#" + targetUrl} target="_blank">
                             {targetText}
                         </a>
                     </th>
@@ -224,7 +227,7 @@ function Result() {
                 <img src={`${process.env.PUBLIC_URL}/conq/混迷.png`} loading='lazy' alt='混迷の地の画像' />
             </details>
             <>現在の日時{getTime.getHours().toString().padStart(2, '0')}:{getTime.getMinutes().toString().padStart(2, '0')}:{getTime.getSeconds().toString().padStart(2, '0')}</>
-            <Table>
+            <Table border="1" className="bg-dark">
                 {list}
             </Table>
         </>
