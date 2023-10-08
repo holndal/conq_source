@@ -128,6 +128,7 @@ function Result() {
             if (leftTime < 0) {
                 timetext = "領土戦 保留中"
             }
+            let targetText = targetTime.getHours().toString().padStart(2, '0') + ":" + targetTime.getMinutes().toString().padStart(2, '0')
             listt.push(
                 <tr>
                     <th>
@@ -143,7 +144,9 @@ function Result() {
                         {timetext}
                     </th>
                     <th>
-                        {targetTime.getHours().toString().padStart(2, '0')}:{targetTime.getMinutes().toString().padStart(2, '0')}
+                        <a href={"https://onlinealarmkur.com/ja/#" + targetText} target="_blank">
+                            {targetText}
+                        </a>
                     </th>
                 </tr>
             )
