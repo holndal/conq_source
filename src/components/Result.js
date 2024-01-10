@@ -19,7 +19,7 @@ function Result() {
         }, 1000)
     }, [])
     if (getCsv == null) {
-        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSZGE5EGSpP2J-l-griubIFDR2rhrc8ZbJiWg4zIjMSEzxhx733UHwJRbCBzF4TeqJgq4IcV83YWbkk/pub?gid=1857516522&single=true&output=csv")
+        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTZqDNHmeuwzG63gWtrlec_57LSzzzNBB9NH-0IK_biJGJbRfBhLUHYAyCMAGC_FBrbY9DHIUL6UoFZ/pub?gid=1857516522&single=true&output=csv")
             .then(response => response.text())
             .then(data => {
                 setCsv(data.split("\n"))
@@ -216,15 +216,19 @@ function Result() {
             </details>
             <details>
                 <summary>オグリア</summary>
-                <img src={`${process.env.PUBLIC_URL}/conq/オグリア.png`} loading='lazy' alt='オグリアの画像' />
+                <img src={`${process.env.PUBLIC_URL}/オグリア.png`} loading='lazy' alt='オグリアの画像' />
             </details>
             <details>
                 <summary>クレメンス</summary>
-                <img src={`${process.env.PUBLIC_URL}/conq/クレメンス.png`} loading='lazy' alt='クレメンスの画像' />
+                <img src={`${process.env.PUBLIC_URL}/クレメンス.png`} loading='lazy' alt='クレメンスの画像' />
             </details>
             <details>
                 <summary>混迷</summary>
-                <img src={`${process.env.PUBLIC_URL}/conq/混迷.png`} loading='lazy' alt='混迷の地の画像' />
+                <img src={`${process.env.PUBLIC_URL}/混迷.png`} loading='lazy' alt='混迷の地の画像' />
+            </details>
+            <details>
+                <summary>安涼府</summary>
+                <img src={`${process.env.PUBLIC_URL}/安涼府.png`} loading='lazy' alt='安涼府の画像' />
             </details>
             <>現在の日時{getTime.getHours().toString().padStart(2, '0')}:{getTime.getMinutes().toString().padStart(2, '0')}:{getTime.getSeconds().toString().padStart(2, '0')}</>
             <Table border="1" className="bg-dark">
