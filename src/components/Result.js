@@ -115,7 +115,7 @@ function Result() {
             if (leftTime < 0) {
                 let now = new Date()
                 if (now.getDay() === 2 || now.getDay() === 6) {
-                    if (21 <= now.getHours() && now.getHours() <= 23) {
+                    if (21 <= now.getHours() && now.getHours() < 23) {
                         flaggy = false
                     }
                 }
@@ -126,7 +126,7 @@ function Result() {
             }
             let timetext = Math.floor(leftTime / 60).toString().padStart(2, '0') + ":" + Math.floor(leftTime % 60).toString().padStart(2, '0')
             if (leftTime < 0) {
-                timetext = "領土戦 保留中"
+                timetext = "領土戦 保留中(21時-23時の間はリストから消去されません)"
             }
             let targetText = targetTime.getHours().toString().padStart(2, '0') + ":" + targetTime.getMinutes().toString().padStart(2, '0')
             let targetTimer = targetTime.getHours() * 60 + targetTime.getMinutes() - 1
