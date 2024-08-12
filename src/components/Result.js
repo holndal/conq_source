@@ -230,6 +230,10 @@ function Result() {
                 <summary>安涼府</summary>
                 <img src={`${process.env.PUBLIC_URL}/安涼府.png`} loading='lazy' alt='安涼府の画像' />
             </details>
+            <details>
+                <summary>コンチェノープル</summary>
+                <img src={`${process.env.PUBLIC_URL}/コンチェ.png`} loading='lazy' alt='コンチェノープルの画像' />
+            </details>
             <>現在の日時{getTime.getHours().toString().padStart(2, '0')}:{getTime.getMinutes().toString().padStart(2, '0')}:{getTime.getSeconds().toString().padStart(2, '0')}</>
             <Table border="1" className="bg-dark">
                 {list}
